@@ -1,0 +1,79 @@
+{
+	"activationEvents": [
+		"onDidChangeActiveTextEditor",
+		"onDidChangeTextDocument",
+		"onDidChangeConfiguration",
+		"onStartupFinished"
+	],
+	"bugs": "https://github.com/Gael-Lopes-Da-Silva/ColoredVSCode/issues/new/choose",
+	"categories": [
+		"Other"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"category": "Colored",
+				"command": "colored.toggleHighlight",
+				"title": "Toggle Hightlight"
+			}
+		],
+		"configuration": {
+			"properties": {
+                "colored.borderRadius": {
+					"default": 3,
+					"description": "Give a border raduis to the background.",
+					"type": "integer"
+				},
+				"colored.highlight": {
+					"default": true,
+					"description": "Turn on or off colors highlight.",
+					"type": "boolean"
+				}
+			},
+			"title": "Colored Configuration",
+			"type": "object"
+		},
+        "keybindings": [
+			{
+				"command": "editor.action.showOrFocusStandaloneColorPicker",
+				"key": "alt+v",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"description": "Highlight color related keyword such as #FFFFFF and more",
+	"devDependencies": {
+		"@types/node": "18.x",
+		"@types/vscode": "^1.84.0",
+		"vsce": "^2.15.0"
+	},
+	"displayName": "Colored",
+	"engines": {
+		"vscode": "^1.84.0"
+	},
+	"galleryBanner": {
+		"color": "#ffd900",
+		"theme": "dark"
+	},
+	"icon": "resources/logo.png",
+	"keywords": [
+		"color",
+		"anotations",
+		"colored",
+		"hightlight"
+	],
+	"license": "LICENSE.md",
+	"main": "src/extension.js",
+	"markdown": "github",
+	"name": "colored",
+	"publisher": "gael-lopes-da-silva",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Gael-Lopes-Da-Silva/ColoredVSCode"
+	},
+	"scripts": {
+		"package": "vsce package -o build",
+		"publish": "vsce publish"
+	},
+	"version": "0.0.1"
+}
