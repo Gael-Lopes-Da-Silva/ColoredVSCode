@@ -8,6 +8,9 @@
 
 ---
 
+### 0.0.3
+- Added support for alpha channel
+
 ### 0.0.2
 - Updated README
 

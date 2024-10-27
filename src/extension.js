@@ -79,8 +79,8 @@ function updateDecorations() {
     let decorations = new Map();
     let expresion = "";
 
-    expresion += `#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b`;
-    expresion += `|\\brgb\\(\\s*(\\d{1,3})\\s*,\\s*(\\d{1,3})\\s*,\\s*(\\d{1,3})\\s*\\)`;
+    expresion += `#([a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b`;
+    expresion += `|\\brgba?\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|0(?:\\.\\d+)?)\\)`;
 
     const regex = new RegExp(expresion, `g`);
 
@@ -89,7 +89,15 @@ function updateDecorations() {
         const startPos = activeTextEditor.document.positionAt(match.index);
         const endPos = activeTextEditor.document.positionAt(match.index + match[0].length);
 
-        let color = match[0].startsWith('#') ? match[0] : `rgb(${match[2]}, ${match[3]}, ${match[4]})`;
+        let color = "";
+
+        if (match[0].startsWith('#')) {
+            color = match[0];
+        } else if (match[0].startsWith('rgba')) {
+            color = `rgba(${match[2]}, ${match[3]}, ${match[4]}, ${match[5]})`;
+        } else if (match[0].startsWith('rgb')) {
+            color = `rgb(${match[2]}, ${match[3]}, ${match[4]})`;
+        }
 
         const isBright = isBrightColor(match[0]);
         const textColor = isBright ? 'black' : 'white';
