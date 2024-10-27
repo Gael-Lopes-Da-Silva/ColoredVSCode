@@ -23,12 +23,12 @@
 ### Colored is a simple extension to highlight colors such as #ffffff and more.
 
 ## Options
-#### Todoed has 1 command available right now. `Colored: Toggle Hightlight` that turn on or off the colors highlight.
+#### Colored has 1 command available right now. `Colored: Toggle Hightlight` that turn on or off the colors highlight.
 
 ~~~json
 {
-	"todoed.borderRadius": 3, // Raduis of the colors background
-	"todoed.highlight": true, // Enable or disable highlight of colors
+	"colored.borderRadius": 3, // Raduis of the colors background
+	"colored.highlight": true, // Enable or disable highlight of colors
 }
 ~~~
 
