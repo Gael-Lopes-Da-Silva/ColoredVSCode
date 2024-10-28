@@ -79,8 +79,9 @@ function updateDecorations() {
     let decorations = new Map();
     let expresion = "";
 
-    expresion += `#([a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b`;
-    expresion += `|\\brgba?\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|0(?:\\.\\d+)?)\\)`;
+    expresion += `#(?:[a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b`;
+    expresion += `|\\b(rgb)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*\\)`;
+    expresion += `|\\b(rgba)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|0(?:\\.\\d+)?)\\)`;
 
     const regex = new RegExp(expresion, `g`);
 
@@ -93,10 +94,12 @@ function updateDecorations() {
 
         if (match[0].startsWith('#')) {
             color = match[0];
-        } else if (match[0].startsWith('rgba')) {
-            color = `rgba(${match[2]}, ${match[3]}, ${match[4]}, ${match[5]})`;
-        } else if (match[0].startsWith('rgb')) {
-            color = `rgb(${match[2]}, ${match[3]}, ${match[4]})`;
+        } else {
+            if (match[1] == "rgb") {
+                color = `rgb(${match[2]}, ${match[3]}, ${match[4]})`;
+            } else if (match[5] == "rgba") {
+                color = `rgba(${match[6]}, ${match[7]}, ${match[8]}, ${match[9]})`;
+            }
         }
 
         const isBright = isBrightColor(match[0]);

@@ -8,6 +8,9 @@
 
 ---
 
+### 0.0.4
+- Fixed problem with rgb matching
+
 ### 0.0.3
 - Added support for alpha channel
 
