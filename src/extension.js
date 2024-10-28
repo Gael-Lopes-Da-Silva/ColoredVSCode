@@ -1,6 +1,6 @@
 // @author: Gael Lopes Da Silva
-// @project: Todoed
-// @github: https://github.com/Gael-Lopes-Da-Silva/TodoedVSCode
+// @project: Colored
+// @github: https://github.com/Gael-Lopes-Da-Silva/ColoredVSCode
 
 const vscode = require('vscode');
 
