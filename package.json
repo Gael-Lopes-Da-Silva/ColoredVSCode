@@ -28,6 +28,16 @@
 					"default": true,
 					"description": "Turn on or off colors highlight.",
 					"type": "boolean"
+				},
+                "colored.maxFileSize": {
+					"default": 1000000,
+					"description": "The maximum file size to work with.",
+					"type": ["integer", "integer"]
+				},
+                "colored.maxLineCount": {
+					"default": 10000,
+					"description": "The maximum number of line to work with.",
+					"type": ["integer", "null"]
 				}
 			},
 			"title": "Colored Configuration",
@@ -75,5 +85,5 @@
 		"package": "vsce package -o build",
 		"publish": "vsce publish"
 	},
-	"version": "0.0.4"
+	"version": "0.0.5"
 }

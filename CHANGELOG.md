@@ -8,6 +8,10 @@
 
 ---
 
+### 0.0.5
+- Improved performance
+- Added max file size and line number (1mb and 10,000 lines)
+
 ### 0.0.4
 - Fixed problem with rgb matching
 

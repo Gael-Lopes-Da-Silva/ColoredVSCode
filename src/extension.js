@@ -4,9 +4,12 @@
 
 const vscode = require('vscode');
 
+let decorationTypes = [];
+
 let highlight = true;
 let borderRadius = 3;
-let decorationTypes = [];
+let maxFileSize = 1000000;
+let maxLineCount = 10000;
 
 // ----------------------------------------------------
 
@@ -34,6 +37,8 @@ function loadConfiguration() {
 
     highlight = config.inspect('highlight').globalValue || config.get('highlight');
     borderRadius = config.inspect('borderRadius').globalValue || config.get('borderRadius');
+    maxFileSize = config.inspect('maxFileSize').globalValue || config.get('maxFileSize');
+    maxLineCount = config.inspect('maxLineCount').globalValue || config.get('maxLineCount');
 }
 
 function toggleHighlight() {
@@ -75,15 +80,11 @@ function updateDecorations() {
     if (!activeTextEditor) return;
 
     const text = activeTextEditor.document.getText();
-    
+    if (maxFileSize !== null && text.length > maxFileSize || maxLineCount !== null && activeTextEditor.document.lineCount > maxLineCount) return;
+
     let decorations = new Map();
-    let expresion = "";
 
-    expresion += `#(?:[a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b`;
-    expresion += `|\\b(rgb)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*\\)`;
-    expresion += `|\\b(rgba)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|0(?:\\.\\d+)?)\\)`;
-
-    const regex = new RegExp(expresion, `g`);
+    const regex = new RegExp("#(?:[a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b|\\b(rgb)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*\\)|\\b(rgba)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|0(?:\\.\\d+)?)\\)", 'g');
 
     let match;
     while ((match = regex.exec(text))) {
@@ -102,10 +103,8 @@ function updateDecorations() {
             }
         }
 
-        const isBright = isBrightColor(match[0]);
-        const textColor = isBright ? 'black' : 'white';
-
         if (!decorations.has(color)) {
+            const textColor = isBrightColor(match[0]) ? 'black' : 'white';
             const decorationType = vscode.window.createTextEditorDecorationType({
                 backgroundColor: color,
                 color: textColor,
