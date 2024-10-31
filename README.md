@@ -20,10 +20,10 @@
 	</a>
 </div>
 
-### Colored is a simple extension to highlight colors such as #ffffff and more.
+### Colored is a simple extension that highlight colors in hexadecimal and rgb value. It also support alpha channel for transparency.
 
 ## Options
-#### Colored has 1 command available right now. `Colored: Toggle Hightlight` that turn on or off the colors highlight.
+#### Colored has 1 command available right now. `Colored: Toggle Hightlight` that turn on or off colors highlighting.
 
 ~~~json
 {

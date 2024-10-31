@@ -8,6 +8,9 @@
 
 ---
 
+### 0.0.6
+- Update README descriptions
+
 ### 0.0.5
 - Improved performance
 - Added max file size and line number (1mb and 10,000 lines)
