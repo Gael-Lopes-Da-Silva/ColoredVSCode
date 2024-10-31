@@ -6,6 +6,10 @@
 	<img width="400px" src="./resources/logo.png" alt="">
 </div>
 
+<div align="center">
+    <a href="https://github.com/Gael-Lopes-Da-Silva/ColoredVSCode">https://github.com/Gael-Lopes-Da-Silva/ColoredVSCode</a>
+</div>
+
 <br>
 
 <div align="center">
@@ -20,10 +24,17 @@
 	</a>
 </div>
 
-### Colored is a simple extension that highlight colors in hexadecimal and rgb value. It also support alpha channel for transparency.
 
-## Options
-#### Colored has 1 command available right now. `Colored: Toggle Hightlight` that turn on or off colors highlighting.
+Description
+------------------------------------------------------------------
+
+Colored is a simple extension that highlight colors in hexadecimal and rgb value. It also support alpha channel for transparency.
+
+
+Options
+------------------------------------------------------------------
+
+Colored has 1 command available right now. `Colored: Toggle Hightlight` that turn on or off colors highlighting.
 
 ~~~json
 {
@@ -34,11 +45,20 @@
 }
 ~~~
 
-## Screenshots
-<img src="./screenshots/colored_1.png" alt="">
 
-## How to build ?
+Screenshots
+------------------------------------------------------------------
+
+![](./screenshots/colored_1.png)
+
+
+How to build
+------------------------------------------------------------------
+
 If you want a build of Colored you can find it in the release section or in the [build](./build/) folder. Else use `vsce package` in the project folder.
 
-## How to install ?
+
+How to install
+------------------------------------------------------------------
+
 To install, open visual studio code and go to the extention menu. Click on the three dots and click on `Install from VSIX` and choose the `colored-X.X.X.vsix` file. Or just install it on the market place.

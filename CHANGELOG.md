@@ -8,6 +8,9 @@
 
 ---
 
+### 0.0.7
+- Update README
+
 ### 0.0.6
 - Update README descriptions
 
