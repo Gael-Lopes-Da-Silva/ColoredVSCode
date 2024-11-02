@@ -34,7 +34,7 @@
                     "description": "The maximum file size to work with.",
                     "type": [
                         "integer",
-                        "integer"
+                        "null"
                     ]
                 },
                 "colored.maxLineCount": {
@@ -89,5 +89,5 @@
         "package": "vsce package -o build",
         "publish": "vsce publish"
     },
-    "version": "0.0.8"
+    "version": "0.0.9"
 }
