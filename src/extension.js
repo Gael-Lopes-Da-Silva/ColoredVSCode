@@ -84,7 +84,7 @@ function updateDecorations() {
 
     let decorations = new Map();
 
-    const regex = new RegExp("#(?:[a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})\\b|\\b(rgb)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*\\)|\\b(rgba)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|0(?:\\.\\d+)?)\\)", 'g');
+    const regex = new RegExp("#(?:[a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{4}|[a-fA-F0-9]{3})\\b|\\b(rgb)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*\\)|\\b(rgba)\\(\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*(\\d{1,3})\\s*(?:,)?\\s*\\/?\\s*(\\d{1,3}%|[01](?:\\.\\d+)?)\\)", 'g');
 
     let match;
     while ((match = regex.exec(text))) {
@@ -104,10 +104,9 @@ function updateDecorations() {
         }
 
         if (!decorations.has(color)) {
-            const textColor = isBrightColor(match[0]) ? 'black' : 'white';
             const decorationType = vscode.window.createTextEditorDecorationType({
                 backgroundColor: color,
-                color: textColor,
+                color: isBrightColor(match[0]) ? 'black' : 'white',
                 borderRadius: `${borderRadius}px`
             });
             decorations.set(color, {
@@ -128,25 +127,43 @@ function updateDecorations() {
 }
 
 function isBrightColor(color) {
-    let r, g, b;
+    let r, g, b, a = 1;
 
     if (color.startsWith('#')) {
         if (color.length === 4) {
             r = parseInt(color[1] + color[1], 16);
             g = parseInt(color[2] + color[2], 16);
             b = parseInt(color[3] + color[3], 16);
+        } else if (color.length === 5) {
+            r = parseInt(color[1] + color[1], 16);
+            g = parseInt(color[2] + color[2], 16);
+            b = parseInt(color[3] + color[3], 16);
+            a = parseInt(color[4] + color[4], 16) / 255;
+        } else if (color.length === 9) {
+            r = parseInt(color.slice(1, 3), 16);
+            g = parseInt(color.slice(3, 5), 16);
+            b = parseInt(color.slice(5, 7), 16);
+            a = parseInt(color.slice(7, 9), 16) / 255;
         } else {
             r = parseInt(color.slice(1, 3), 16);
             g = parseInt(color.slice(3, 5), 16);
             b = parseInt(color.slice(5, 7), 16);
         }
     } else {
-        r = parseInt(color.match(/\d+/g)[0]);
-        g = parseInt(color.match(/\d+/g)[1]);
-        b = parseInt(color.match(/\d+/g)[2]);
+        const rgbValues = color.match(/(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,)?\s*\/?\s*(\d{1,3}%|[01](?:\.\d+)?)?/);
+
+        if (rgbValues) {
+            r = parseInt(rgbValues[1], 10);
+            g = parseInt(rgbValues[2], 10);
+            b = parseInt(rgbValues[3], 10);
+    
+            if (rgbValues[4]) {
+                a = rgbValues[4].includes('%') ? parseFloat(rgbValues[4]) / 100 : parseFloat(rgbValues[4]);
+            }
+        }        
     }
 
-    const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+    const brightness = (0.299 * r + 0.587 * g + 0.114 * b) * a;
     return brightness > 128;
 }
 

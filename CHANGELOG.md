@@ -8,6 +8,9 @@
 
 ---
 
+### 0.0.8
+- Fixed issue with text brightness calculation if there is transparency
+
 ### 0.0.7
 - Update README
 
