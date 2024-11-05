@@ -156,11 +156,11 @@ function isBrightColor(color) {
             r = parseInt(rgbValues[1], 10);
             g = parseInt(rgbValues[2], 10);
             b = parseInt(rgbValues[3], 10);
-    
+
             if (rgbValues[4]) {
                 a = rgbValues[4].includes('%') ? parseFloat(rgbValues[4]) / 100 : parseFloat(rgbValues[4]);
             }
-        }        
+        }
     }
 
     const brightness = (0.299 * r + 0.587 * g + 0.114 * b) * a;
