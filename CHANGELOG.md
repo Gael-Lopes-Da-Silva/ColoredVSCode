@@ -8,7 +8,10 @@
 
 ---
 
-### 0.0.8
+### 0.1.0
+- Update publish config
+
+### 0.0.9
 - Fixed config issue
 
 ### 0.0.8

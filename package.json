@@ -5,6 +5,11 @@
         "onDidChangeConfiguration",
         "onStartupFinished"
     ],
+    "author": {
+        "email": "gael.lopes-da-silva@outlook.fr",
+        "name": "Gaël Lopes Da Silva",
+        "url": "https://github.com/Gael-Lopes-Da-Silva"
+    },
     "bugs": "https://github.com/Gael-Lopes-Da-Silva/ColoredVSCode/issues/new/choose",
     "categories": [
         "Other"
@@ -89,5 +94,5 @@
         "package": "vsce package -o build",
         "publish": "vsce publish"
     },
-    "version": "0.0.9"
+    "version": "0.1.0"
 }
