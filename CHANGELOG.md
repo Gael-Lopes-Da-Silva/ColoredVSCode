@@ -8,6 +8,9 @@
 
 ---
 
+### 0.1.1
+- Force color font weight to normal
+
 ### 0.1.0
 - Update publish config
 

@@ -107,6 +107,7 @@ function updateDecorations() {
             const decorationType = vscode.window.createTextEditorDecorationType({
                 backgroundColor: color,
                 color: isBrightColor(match[0]) ? 'black' : 'white',
+                fontWeight: "normal",
                 borderRadius: `${borderRadius}px`
             });
             decorations.set(color, {
