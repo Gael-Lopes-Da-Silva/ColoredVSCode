@@ -8,6 +8,13 @@
 
 ---
 
+### 0.1.2
+- Fixed rgb color for alpha channel with /
+- Added support for hsl color format
+- Added support for lch color format
+- Added support for hwb color format
+- Added support for lab color format
+
 ### 0.1.1
 - Force color font weight to normal
 

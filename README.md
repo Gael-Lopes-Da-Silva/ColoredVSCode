@@ -31,6 +31,20 @@ Description
 Colored is a simple extension that highlight colors in hexadecimal and rgb value. It also support alpha channel for transparency.
 
 
+Supported color formats
+------------------------------------------------------------------
+
+Right now we support the following color formats.
+- hexadecimal
+- rgb - rgba
+- hsl - hsla
+- lch
+- hwb
+- lab
+
+If you want to learn more a web color in general, see [here](https://en.wikipedia.org/wiki/Web_colors).
+
+
 Options
 ------------------------------------------------------------------
 

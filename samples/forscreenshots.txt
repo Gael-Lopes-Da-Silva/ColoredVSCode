@@ -1,0 +1,18 @@
+#FF5733 - A warm, vibrant orange.
+#4CAF50 - A bright, fresh green.
+#FF9800 - A cheerful, energetic orange.
+#2196F3 - A cool, calm blue.
+#9C27B0 - A vibrant purple.
+#FF4081 - A bold pink.
+#00BCD4 - A lively cyan.
+
+Hex: #FF5733 (warm, vibrant orange)
+RGB: rgb(76, 175, 80) (bright, fresh green)
+RGBA: rgba(255, 152, 0, 0.8) (cheerful, energetic orange with slight transparency)
+HSL: hsl(210, 100%, 60%) (cool, calm blue)
+HSLA: hsla(320, 50%, 60%, 0.7) (vibrant purple with slight transparency)
+LCH: lch(70%, 70, 270) (bold pink in LCH format)
+HWB: hwb(180, 30%, 0%) (lively cyan in HWB format)
+
+
+
