@@ -54,6 +54,9 @@ Colored has 1 command available right now. `Colored: Toggle Hightlight` that tur
 {
 	"colored.borderRadius": 3, // Raduis of the colors background
 	"colored.highlight": true, // Enable or disable highlight of colors
+    "colored.background": true, // Highlight color background
+    "colored.border": false, // Highlight color border
+    "colored.borderSize": 2, // Change the border size of colors
     "colored.maxFileSize": 1000000, // The maximum file size to work with (1mb)
     "colored.maxLineCount": 10000, // The maximum number of line to work with
 }

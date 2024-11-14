@@ -8,6 +8,9 @@
 
 ---
 
+### 0.1.3
+- Added options to toggle background or border highlight of colors
+
 ### 0.1.2
 - Fixed rgb color for alpha channel with /
 - Added support for hsl color format

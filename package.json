@@ -34,6 +34,21 @@
                     "description": "Turn on or off colors highlight.",
                     "type": "boolean"
                 },
+                "colored.background": {
+                    "default": true,
+                    "description": "Highlight color background.",
+                    "type": "boolean"
+                },
+                "colored.border": {
+                    "default": false,
+                    "description": "Highlight color border.",
+                    "type": "boolean"
+                },
+                "colored.borderSize": {
+                    "default": 2,
+                    "description": "Change the border size of colors.",
+                    "type": "integer"
+                },
                 "colored.maxFileSize": {
                     "default": 1000000,
                     "description": "The maximum file size to work with.",
@@ -94,5 +109,5 @@
         "package": "vsce package -o build",
         "publish": "vsce publish"
     },
-    "version": "0.1.2"
+    "version": "0.1.3"
 }

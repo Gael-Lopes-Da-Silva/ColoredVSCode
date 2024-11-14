@@ -8,6 +8,9 @@ let decorationTypes = [];
 
 let highlight = true;
 let borderRadius = 3;
+let background = true;
+let border = false;
+let borderSize = 2;
 let maxFileSize = 1000000;
 let maxLineCount = 10000;
 
@@ -36,6 +39,9 @@ function loadConfiguration() {
     const config = vscode.workspace.getConfiguration('colored');
 
     highlight = config.inspect('highlight').globalValue || config.get('highlight');
+    background = config.inspect('background').globalValue || config.get('background');
+    border = config.inspect('border').globalValue || config.get('border');
+    borderSize = config.inspect('borderSize').globalValue || config.get('borderSize');
     borderRadius = config.inspect('borderRadius').globalValue || config.get('borderRadius');
     maxFileSize = config.inspect('maxFileSize').globalValue || config.get('maxFileSize');
     maxLineCount = config.inspect('maxLineCount').globalValue || config.get('maxLineCount');
@@ -134,8 +140,9 @@ function updateDecorations() {
 
         if (!decorations.has(color)) {
             const decorationType = vscode.window.createTextEditorDecorationType({
-                backgroundColor: color,
-                color: isBrightColor(color) ? 'black' : 'white',
+                backgroundColor: background ? color : undefined,
+                border: border ? `${borderSize}px solid ${color}` : undefined,
+                color: background ? (isBrightColor(color) ? 'black' : 'white') : undefined,
                 fontWeight: "normal",
                 borderRadius: `${borderRadius}px`
             });
