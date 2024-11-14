@@ -52,8 +52,8 @@ Colored has 1 command available right now. `Colored: Toggle Hightlight` that tur
 
 ~~~json
 {
-	"colored.borderRadius": 3, // Raduis of the colors background
-	"colored.highlight": true, // Enable or disable highlight of colors
+    "colored.borderRadius": 3, // Raduis of the colors background
+    "colored.highlight": true, // Enable or disable highlight of colors
     "colored.background": true, // Highlight color background
     "colored.border": false, // Highlight color border
     "colored.borderSize": 2, // Change the border size of colors
